@@ -8,17 +8,25 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
         integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <title>Document</title>
+    <title>LittleUrl</title>
 </head>
-<body>
-    <h1 class="text-center font-bold text-3xl mt-20">Little URL Shortner</h1>
-    <form class="w-full md:w-1/2 m-auto mt-12" action="/shortUrl" method="post">
+<body class="bg-gray-800">
+    <h1 class="text-center font-bold text-3xl mt-20 text-white">Little URL Shortner</h1>
+    <form class="w-full md:w-1/2 m-auto px-24 mt-12" action="/shortUrl" method="post">
         <input class="w-full md:w-9/12 ring-4 px-4 py-3" type="url" name="fullurl" placeholder="https://www.example.com/" required>
-        <input type="submit" value="Shrink" class="md:w-2/12 bg-orange-400 border-4 mt-3 md:mt-0 border-orange-400 py-3 px-3 w-full md:px-6 text-white">
+        <input type="submit" value="Shrink" class="md:w-2/12 bg-orange-400 border-4 mt-3 md:mt-0 border-orange-400 py-3 px-2 w-full md:px-4 text-white">
     </form>
     <br/>
     <% if(sUrl != "") { %>
-    <p class="text-center w-1/2 m-auto text-gray-600"><%= sUrl %>  <a href='<%= sUrl %>' target="_blank"><i class="fa-solid fa-share ml-3"></i></a></p>
+    <p class="text-center w-1/2 m-auto text-gray-600 cursor-pointer" id="myInput" onclick="myFunction()"><%= sUrl %> <a href='<%= sUrl %>' target="_blank"><i class="fa-solid text-white fa-share ml-3"></i></a></p> 
     <% } %>
+
+    <script>
+        function myFunction() {
+            var copyText = document.getElementById("myInput");
+            navigator.clipboard.writeText(copyText.innerText);
+            alert("Copied the text: " + copyText.innerText);
+        }
+    </script>
 </body>
 </html>
